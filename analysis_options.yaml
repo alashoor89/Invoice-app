@@ -1,0 +1,22 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    prefer_relative_imports: true
+    always_declare_return_types: true
+    prefer_const_constructors: true
+    prefer_const_constructors_in_immutables: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    prefer_final_parameters: true
+    prefer_iterable_whereType: true
+    always_put_control_body_on_new_line: true
+
+formatter:
+  trailing_commas: preserve
+
+analyzer:
+  plugins:
+    - custom_lint
