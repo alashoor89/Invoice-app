@@ -12,7 +12,6 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  flutter_screenutil: ^5.9.3
   # hooks
   flutter_hooks: ^0.21.2
   # riverpod

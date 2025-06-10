@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -86,18 +85,12 @@ class _MyAppState extends ConsumerState<MyApp> {
   Widget build(final BuildContext context) {
     final palette = ref.watch(paletteProvider);
     final router = ref.watch(goRouterProvider);
-    return ScreenUtilInit(
-      minTextAdapt: true,
-      designSize: const Size(375, 812),
+    return MaterialApp.router(
+      theme: palette.theme,
+      debugShowCheckedModeBanner: false,
+      routerConfig: router,
       builder: (final context, final child) {
-        return MaterialApp.router(
-          theme: palette.theme,
-          debugShowCheckedModeBanner: false,
-          routerConfig: router,
-          builder: (final context, final child) {
-            return ScrollConfiguration(behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false), child: child!);
-          },
-        );
+        return ScrollConfiguration(behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false), child: child!);
       },
     );
   }
