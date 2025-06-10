@@ -6,7 +6,7 @@ import '../interfaces/controllers.dart';
 part 'home_controller.g.dart';
 
 @Riverpod(keepAlive: true)
-HomeController homeController(Ref ref) {
+HomeController homeController(final Ref ref) {
   return _HomeController(ref);
 }
 
