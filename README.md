@@ -16,10 +16,16 @@ Demo This application is available for demo at [https://invoice-app-p484.apps.al
 
 # Screenshots
 
-<div>
-<img src="screenshots/screenshot-login.png" alt="login screen" width="300">
-<img src="screenshots/screenshot-desktop-login.png" alt="desktop screen" width="600">
-</div>
+<table>
+  <tr>
+    <img src="screenshots/screenshot-login.png" alt="login screen" width="300">
+    <img src="screenshots/screenshot-home.png" alt="home screen" width="300">
+  </tr>
+  <tr>
+    <img src="screenshots/screenshot-desktop-login.png" alt="login desktop screen" width="600">
+    <img src="screenshots/screenshot-desktop-home.png" alt="home desktop screen" width="600">
+  </tr>
+</table>
 
 # License
 
