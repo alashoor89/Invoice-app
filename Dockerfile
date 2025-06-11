@@ -1,7 +1,7 @@
 
 # Use an official Flutter image as a parent image
 
-FROM instrumentisto/flutter:3.27.3 AS flutter
+FROM instrumentisto/flutter:3.32.2 AS flutter
 
 # Set the working directory
 

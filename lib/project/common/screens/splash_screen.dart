@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../gen/assets.gen.dart';
+import '../widgets/app_logo.dart';
 
 final random = Random.secure();
 
@@ -12,9 +12,9 @@ class SplashScreen extends ConsumerWidget {
 
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-        child: Assets.images.logoTransparent.image(
+        child: AppLogo(
           width: 256,
           height: 256,
         ),

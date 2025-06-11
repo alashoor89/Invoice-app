@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../common/constants/fonts.dart';
 import 'light_theme.dart';
 
 part 'palette.g.dart';
@@ -28,6 +29,9 @@ abstract class Palette {
   final Color warning = const Color(0xFFF39C12);
   final Color danger = const Color(0xFFE74C3C);
   final Color grey = const Color.fromRGBO(209, 213, 219, 1);
+  final Color grey2 = const Color(0xFFEFEFEF);
+  final Color black = const Color(0xFF000000);
+  final Color white = const Color(0xFFFFFFFF);
 
   Palette({
     required this.background,
@@ -44,14 +48,12 @@ abstract class Palette {
     brightness: brightness,
     textTheme: GoogleFonts.nunitoTextTheme().apply(bodyColor: foreground, displayColor: foreground),
     elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundAlt,
-        foregroundColor: foregroundAlt,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            4,
-          ),
-        ),
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all(primary),
+        foregroundColor: WidgetStateProperty.all(backgroundAlt),
+        textStyle: WidgetStateProperty.all(const TextStyle().bold),
+        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(vertical: 16, horizontal: 32)),
+        shape: WidgetStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4)))),
       ),
     ),
   );

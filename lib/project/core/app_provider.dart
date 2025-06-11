@@ -31,7 +31,7 @@ class _AppImpl extends App {
 
     // Simulate some initialization work
 
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     // After initialization, set the state to ready
 

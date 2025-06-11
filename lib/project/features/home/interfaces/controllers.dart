@@ -1,2 +1,1 @@
-abstract class HomeController {
-}
+abstract class HomeController {}

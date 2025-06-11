@@ -20,25 +20,25 @@ class RouteModel {
   });
 
   factory RouteModel.build({
-    required String name,
-    required String path,
-    GoRouterPageBuilder? pageBuilder,
-    GoRouterWidgetBuilder? builder,
-    GoRouterRedirect? redirect,
-    List<RouteModel> routes,
+    required final String name,
+    required final String path,
+    final GoRouterPageBuilder? pageBuilder,
+    final GoRouterWidgetBuilder? builder,
+    final GoRouterRedirect? redirect,
+    final List<RouteModel> routes,
   }) = RouteModel._;
 
   GoRoute get route => GoRoute(
-        name: name,
-        path: path,
-        pageBuilder: pageBuilder,
-        redirect: redirect,
-        builder: builder,
-        routes: routes?.map((e) => e.route).toList() ?? [],
-      );
+    name: name,
+    path: path,
+    pageBuilder: pageBuilder,
+    redirect: redirect,
+    builder: builder,
+    routes: routes?.map((final e) => e.route).toList() ?? [],
+  );
 
   StatefulShellBranch get shell => StatefulShellBranch(
-        initialLocation: path,
-        routes: [route, ...(routes0?.map((e) => e.route).toList() ?? [])],
-      );
+    initialLocation: path,
+    routes: [route, ...(routes0?.map((final e) => e.route).toList() ?? [])],
+  );
 }

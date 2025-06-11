@@ -45,9 +45,10 @@ class _AppRoute {
 
         final currentLocation = state.uri.path;
         final isSplash = currentLocation == Routes.splash.path;
+        final isSignedIn = false;
 
         if (isSplash) {
-          final route = Routes.home;
+          final route = isSignedIn ? Routes.home : Routes.login;
           // TODO load the user and determine the next route
           return route.path;
         }
