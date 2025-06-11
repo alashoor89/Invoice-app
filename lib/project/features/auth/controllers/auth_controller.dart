@@ -6,7 +6,7 @@ import '../interfaces/controllers.dart';
 part 'auth_controller.g.dart';
 
 @Riverpod(keepAlive: true)
-AuthController authController(Ref ref) {
+AuthController authController(final Ref ref) {
   return _AuthController(ref);
 }
 

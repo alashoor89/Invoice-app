@@ -6,7 +6,7 @@ import '../interfaces/repositories.dart';
 part 'home_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-HomeRepository homeRepository(Ref ref) {
+HomeRepository homeRepository(final Ref ref) {
   return _HomeRepository(ref);
 }
 
