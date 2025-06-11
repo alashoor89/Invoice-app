@@ -25,7 +25,7 @@ void main() async {
       }
 
       // Preserve the splash screen on web/mobile apps and initialize the app
-      if (!(Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
+      if (kIsWeb || !(Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
         FlutterNativeSplash.preserve(widgetsBinding: binding);
         await container.read(appProvider).init();
         FlutterNativeSplash.remove();
@@ -60,6 +60,8 @@ class _MyAppState extends ConsumerState<MyApp> {
     // Call the App#init method to initialize the app and subscribe to it and switch to home if the app is ready
     // Remember that loading state will only show if the app is running on desktop platforms (if app in loading state and not in the cases we have then it is a problem/bug)
     final appState = ref.read(appStateProvider);
+
+    'App state is $appState'.d();
 
     if (appState == AppState.loading) {
       ref.read(appProvider).init().then(
