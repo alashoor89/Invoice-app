@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 
 class RouteModel {
   final String name;
+  final String title;
   final String path;
   final GoRouterPageBuilder? pageBuilder;
   final GoRouterWidgetBuilder? builder;
@@ -12,6 +13,7 @@ class RouteModel {
   const RouteModel._({
     required this.name,
     required this.path,
+    this.title = '',
     this.pageBuilder,
     this.redirect,
     this.builder,
@@ -22,6 +24,7 @@ class RouteModel {
   factory RouteModel.build({
     required final String name,
     required final String path,
+    final String title,
     final GoRouterPageBuilder? pageBuilder,
     final GoRouterWidgetBuilder? builder,
     final GoRouterRedirect? redirect,

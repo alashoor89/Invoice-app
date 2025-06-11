@@ -71,7 +71,7 @@ class _MyAppState extends ConsumerState<MyApp> {
           // 2. App Initialize after context is fully built, No state error will occur,
           // We use WidgetsBinding.instance.addPostFrameCallback to wait for the first frame to be built,
           // even if the second case occurs (Guarantees that the context is fully built) and no state problems occurs
-          WidgetsBinding.instance.addPostFrameCallback((final timeStamp) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             if (!mounted) {
               return;
             }

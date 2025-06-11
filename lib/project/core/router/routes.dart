@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../common/screens/splash_screen.dart';
@@ -11,11 +13,25 @@ class Routes {
   // routes that are independent of the main app and don't need a shell
   static final List<RouteModel> routes = [
     splash,
-    home,
     login,
   ];
 
+  static final List<RouteModel> branches = [
+    home,
+  ];
+
   static final RouteModel initial = splash;
+
+  static RouteModel? ofState(final GoRouterState state) {
+    bool func(final route) => route.path == state.uri.path || route.name == state.name;
+    RouteModel? model = routes.firstWhereOrNull(func);
+    model ??= branches.firstWhereOrNull(func);
+    return model;
+  }
+
+  static RouteModel? ofContext(final BuildContext context) {
+    return ofState(GoRouterState.of(context));
+  }
 
   static final splash = RouteModel.build(
     name: 'SplashScreen',
@@ -25,6 +41,7 @@ class Routes {
 
   static final home = RouteModel.build(
     name: 'HomeScreen',
+    title: 'Home',
     path: '/',
     pageBuilder: (final context, final state) => const NoTransitionPage(child: HomeScreen()),
   );
