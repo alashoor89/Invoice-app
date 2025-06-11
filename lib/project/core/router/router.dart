@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../common/enums/app_state.dart';
+import '../../common/screens/main_screen.dart';
 import '../app_provider.dart';
 import 'router_refresh_stream.dart';
 import 'routes.dart';
@@ -21,6 +22,11 @@ GlobalKey<NavigatorState> navigatorKey(final Ref ref) {
   return GlobalKey<NavigatorState>();
 }
 
+@Riverpod(keepAlive: true)
+GlobalKey<StatefulNavigationShellState> shellKey(final Ref ref) {
+  return GlobalKey<StatefulNavigationShellState>();
+}
+
 class _AppRoute {
   final Ref ref;
 
@@ -28,12 +34,24 @@ class _AppRoute {
 
   GoRouter create() {
     final navigatorKey = ref.watch(navigatorKeyProvider);
+    final shellKey = ref.watch(shellKeyProvider);
+
     return GoRouter(
       initialLocation: Routes.initial.path,
       navigatorKey: navigatorKey,
       debugLogDiagnostics: true,
       refreshListenable: RouterRefreshStream(ref),
-      routes: Routes.routes.map((final e) => e.route).toList(),
+      routes: [
+        StatefulShellRoute.indexedStack(
+          parentNavigatorKey: navigatorKey,
+          branches: Routes.branches.map((final e) => e.shell).toList(),
+          key: shellKey,
+          builder: (final context, final state, final navigationShell) {
+            return MainScreen(navigationShell: navigationShell);
+          },
+        ),
+        ...Routes.routes.map((final e) => e.route),
+      ],
       redirect: (final context, final state) {
         final appState = ref.read(appStateProvider);
 
@@ -45,12 +63,20 @@ class _AppRoute {
 
         final currentLocation = state.uri.path;
         final isSplash = currentLocation == Routes.splash.path;
-        final isSignedIn = false;
+        final isSignedIn = true;
 
         if (isSplash) {
           final route = isSignedIn ? Routes.home : Routes.login;
           // TODO load the user and determine the next route
           return route.path;
+        }
+
+        if (isSignedIn && currentLocation == Routes.login.path) {
+          return Routes.home.path;
+        }
+
+        if (!isSignedIn && currentLocation != Routes.login.path) {
+          return Routes.login.path;
         }
 
         return null;
