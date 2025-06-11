@@ -31,7 +31,7 @@ class Routes {
 
   static final login = RouteModel.build(
     name: 'LoginScreen',
-    path: '/auth/login',
+    path: '/login',
     pageBuilder: (final context, final state) => const NoTransitionPage(child: LoginScreen()),
   );
 }
