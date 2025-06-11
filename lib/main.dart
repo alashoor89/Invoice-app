@@ -8,6 +8,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'project/common/enums/app_state.dart';
+import 'project/common/widgets/app_screen_shot.dart';
 import 'project/core/app_provider.dart';
 import 'project/core/router/router.dart';
 import 'project/core/theme/palette.dart';
@@ -22,7 +23,6 @@ void main() async {
       if (kIsWeb) {
         usePathUrlStrategy();
       }
-
 
       // Preserve the splash screen on web/mobile apps and initialize the app
       if (!(Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
@@ -90,7 +90,10 @@ class _MyAppState extends ConsumerState<MyApp> {
       debugShowCheckedModeBanner: false,
       routerConfig: router,
       builder: (final context, final child) {
-        return ScrollConfiguration(behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false), child: child!);
+        return ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: AppScreenShot(child: child!),
+        );
       },
     );
   }

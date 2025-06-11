@@ -48,7 +48,7 @@ class _AppRoute {
         final isSignedIn = false;
 
         if (isSplash) {
-          final route = isSignedIn ? Routes.home :  Routes.login;
+          final route = isSignedIn ? Routes.home : Routes.login;
           // TODO load the user and determine the next route
           return route.path;
         }

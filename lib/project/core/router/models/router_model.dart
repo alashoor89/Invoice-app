@@ -29,16 +29,16 @@ class RouteModel {
   }) = RouteModel._;
 
   GoRoute get route => GoRoute(
-        name: name,
-        path: path,
-        pageBuilder: pageBuilder,
-        redirect: redirect,
-        builder: builder,
-        routes: routes?.map((final e) => e.route).toList() ?? [],
-      );
+    name: name,
+    path: path,
+    pageBuilder: pageBuilder,
+    redirect: redirect,
+    builder: builder,
+    routes: routes?.map((final e) => e.route).toList() ?? [],
+  );
 
   StatefulShellBranch get shell => StatefulShellBranch(
-        initialLocation: path,
-        routes: [route, ...(routes0?.map((final e) => e.route).toList() ?? [])],
-      );
+    initialLocation: path,
+    routes: [route, ...(routes0?.map((final e) => e.route).toList() ?? [])],
+  );
 }
