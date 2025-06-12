@@ -29,12 +29,10 @@ WORKDIR /app/build/web
 
 # Install Python
 
-FROM python:alpine3.19
+FROM nginx:alpine3.19
 
-COPY --from=flutter /app/build/web /app
+COPY --from=flutter /app/build/web /usr/share/nginx/html/
 
-WORKDIR /app
+COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 8080
-
-CMD ["python", "-m", "http.server", "8080"]

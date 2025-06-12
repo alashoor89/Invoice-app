@@ -4,13 +4,16 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_laravel_form_validation/extensions/extensions.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../../common/extensions.dart';
 import '../../../../common/widgets/app_outlined_text_field.dart';
+import '../../controllers/auth_controller.dart';
+import 'auth_login_button.dart';
 
-class AuthLoginForm extends HookConsumerWidget {
+class AuthLoginForm extends HookWidget {
   const AuthLoginForm({super.key});
 
   @override
-  Widget build(final BuildContext context, final WidgetRef ref) {
+  Widget build(final BuildContext context) {
     final usernameEC = useTextEditingController();
     final pinEc = useTextEditingController();
     final formKey = useMemoized(() => GlobalKey<FormState>());
@@ -58,15 +61,32 @@ class AuthLoginForm extends HookConsumerWidget {
           SizedBox(
             width: double.infinity,
             height: 44,
-            child: ElevatedButton(
-              key: buttonKey,
-              onPressed: () {
-                final isValid = formKey.currentState?.validate() ?? false;
-                if (!isValid) {
-                  return;
-                }
+            child: Consumer(
+              builder: (final context, final ref, final child) {
+                return AuthLoginButton(
+                  buttonKey: buttonKey,
+                  label: 'Sign In',
+                  isLoading: ref.watch(authControllerProvider),
+                  onPressed: () {
+                    final isValid = formKey.currentState?.validate() ?? false;
+                    if (!isValid) {
+                      return;
+                    }
+
+                    ref.read(authControllerProvider.notifier).login(usernameEC.value.text.trim(), pinEc.value.text.trim()).catchError((final error) {
+                      if (!context.mounted) {
+                        return;
+                      }
+                      context.showErrorSnackBar(
+                        message: 'Login failed. Check your credentials and try again.',
+                        onRetry: () {
+                          buttonKey.currentState?.widget.onPressed?.call();
+                        },
+                      );
+                    });
+                  },
+                );
               },
-              child: const Text('Sign In'),
             ),
           ),
         ],

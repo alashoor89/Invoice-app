@@ -32,7 +32,7 @@ class MainSidebarItems extends StatelessWidget {
     SidebarItemModel(
       title: 'Settings',
       icon: Assets.icons.settings,
-      route: '', // TODO implement settings route
+      route: Routes.settings.path,
     ),
   ]);
 
