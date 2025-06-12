@@ -5,6 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../common/enums/app_state.dart';
 import '../../common/screens/main_screen.dart';
+import '../../features/auth/controllers/auth_controller.dart';
 import '../app_provider.dart';
 import 'router_refresh_stream.dart';
 import 'routes.dart';
@@ -36,7 +37,7 @@ class _AppRoute {
     final navigatorKey = ref.watch(navigatorKeyProvider);
     final shellKey = ref.watch(shellKeyProvider);
 
-    return GoRouter(
+    final router = GoRouter(
       initialLocation: Routes.initial.path,
       navigatorKey: navigatorKey,
       debugLogDiagnostics: true,
@@ -63,7 +64,7 @@ class _AppRoute {
 
         final currentLocation = state.uri.path;
         final isSplash = currentLocation == Routes.splash.path;
-        final isSignedIn = true;
+        final isSignedIn = ref.read(loginStateProvider);
 
         if (isSplash) {
           final route = isSignedIn ? Routes.home : Routes.login;
@@ -82,5 +83,15 @@ class _AppRoute {
         return null;
       },
     );
+
+    // Temporary
+    ref.listen(
+      loginStateProvider,
+      (final _, final _) {
+        router.refresh();
+      },
+    );
+
+    return router;
   }
 }

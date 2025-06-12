@@ -30,6 +30,15 @@ class MainSidebarItem extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       backgroundColor: highlightColor,
       onTap: () {
+        if (selected) {
+          return;
+        }
+
+        // Closes the drawer if it is open.
+        if (Scaffold.of(context).isDrawerOpen) {
+          Navigator.of(context).pop();
+        }
+
         context.go(item.route);
       },
       child: SizedBox(

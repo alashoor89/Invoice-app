@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../common/screens/splash_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
 import '../../features/home/screens/home_screen.dart';
+import '../../features/settings/screens/settings_screen.dart';
 import 'models/router_model.dart';
 
 class Routes {
@@ -16,8 +17,10 @@ class Routes {
     login,
   ];
 
+  // TODO maintain the order of the sidebar items.
   static final List<RouteModel> branches = [
     home,
+    settings,
   ];
 
   static final RouteModel initial = splash;
@@ -39,6 +42,12 @@ class Routes {
     pageBuilder: (final context, final state) => const NoTransitionPage(child: SplashScreen()),
   );
 
+  static final login = RouteModel.build(
+    name: 'LoginScreen',
+    path: '/login',
+    pageBuilder: (final context, final state) => const NoTransitionPage(child: LoginScreen()),
+  );
+
   static final home = RouteModel.build(
     name: 'HomeScreen',
     title: 'Home',
@@ -46,10 +55,11 @@ class Routes {
     pageBuilder: (final context, final state) => const NoTransitionPage(child: HomeScreen()),
   );
 
-  static final login = RouteModel.build(
-    name: 'LoginScreen',
-    path: '/login',
-    pageBuilder: (final context, final state) => const NoTransitionPage(child: LoginScreen()),
+  static final settings = RouteModel.build(
+    name: 'SettingsScreen',
+    title: 'Settings',
+    path: '/settings',
+    pageBuilder: (final context, final state) => const NoTransitionPage(child: SettingsScreen()),
   );
 }
 
