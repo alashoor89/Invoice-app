@@ -64,7 +64,7 @@ class AuthLoginForm extends HookWidget {
             child: Consumer(
               builder: (final context, final ref, final child) {
                 return AuthLoginButton(
-                  key: buttonKey,
+                  buttonKey: buttonKey,
                   label: 'Sign In',
                   isLoading: ref.watch(authControllerProvider),
                   onPressed: () {

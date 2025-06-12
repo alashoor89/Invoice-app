@@ -17,7 +17,8 @@ class MainScreen extends StatelessWidget {
   Widget build(final BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     final breakpoint = size.width > 700;
-
+    // TODO Implement a bottom navigation bar for smaller screens and hide some items in the sidebar for mobile devices (the hidden items should be accessible via the bottom navigation bar).
+    // TODO Automatic identification of the hidden items should be based on The SidebarItemModel's `BottomNavigationBar` property.
     return Scaffold(
       drawer: breakpoint.inverseOrNull(
         const Drawer(

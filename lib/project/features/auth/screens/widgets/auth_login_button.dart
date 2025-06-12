@@ -4,10 +4,12 @@ class AuthLoginButton extends StatelessWidget {
   final String label;
   final bool isLoading;
   final VoidCallback? onPressed;
+  final GlobalKey<State<ButtonStyleButton>>? buttonKey;
 
   const AuthLoginButton({
     required this.label,
     required this.onPressed,
+    this.buttonKey,
     this.isLoading = false,
     super.key,
   });
@@ -17,12 +19,13 @@ class AuthLoginButton extends StatelessWidget {
     Widget widget;
 
     if (isLoading) {
-      widget = const Center(child: SizedBox(
-        width: 24,
-        height: 24,
-        child: CircularProgressIndicator(
+      widget = const Center(
+        child: SizedBox(
+          width: 24,
+          height: 24,
+          child: CircularProgressIndicator(),
         ),
-      ));
+      );
     } else {
       widget = Text(label);
     }
@@ -31,7 +34,7 @@ class AuthLoginButton extends StatelessWidget {
       width: double.infinity,
       height: 44,
       child: ElevatedButton(
-        key: key,
+        key: buttonKey,
         onPressed: onPressed,
         child: widget,
       ),

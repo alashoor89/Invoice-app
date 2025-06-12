@@ -43,6 +43,7 @@ dependencies:
   flutter_native_splash: ^2.4.6
   flutter_laravel_form_validation: ^1.0.4
   screenshot: ^3.0.0
+  settings_ui: ^2.0.2
 
 dev_dependencies:
   flutter_test:
