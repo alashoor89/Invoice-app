@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../controllers/auth_controller.dart';
+
 class AuthRecentAccountTile extends ConsumerWidget {
   const AuthRecentAccountTile({super.key});
 
@@ -21,7 +23,9 @@ class AuthRecentAccountTile extends ConsumerWidget {
       title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text('Last used: $lastUsed'),
       trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
-      onTap: () {},
+      onTap: () {
+        ref.read(loginStateProvider.notifier).state = true;
+      },
     );
   }
 }

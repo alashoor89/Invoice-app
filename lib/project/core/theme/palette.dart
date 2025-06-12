@@ -47,6 +47,11 @@ abstract class Palette {
   ThemeData get theme => ThemeData(
     brightness: brightness,
     textTheme: GoogleFonts.nunitoTextTheme().apply(bodyColor: foreground, displayColor: foreground),
+
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: backgroundAlt,
+      linearTrackColor: backgroundAlt,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all(primary),

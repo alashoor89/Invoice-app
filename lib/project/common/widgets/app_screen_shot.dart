@@ -13,7 +13,7 @@ class AppScreenShot extends HookWidget {
 
   @override
   Widget build(final BuildContext context) {
-    if (kReleaseMode || (!kIsWeb && !Platform.isWindows)) {
+    if (true || kReleaseMode || (!kIsWeb && !Platform.isWindows)) {
       return child;
     }
     final controller = useMemoized(() => ScreenshotController());
