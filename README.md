@@ -24,6 +24,7 @@ Demo This application is available for demo at [https://invoice-app-p484.apps.al
     <img src="screenshots/screenshot-home.png" alt="home screen" width="400">
     <img src="screenshots/screenshot-settings.png" alt="settings screen" width="400">
   </tr>
+  <br/>
   <tr>
     <img src="screenshots/screenshot-desktop-login.png" alt="login desktop screen" width="600">
     <img src="screenshots/screenshot-desktop-home.png" alt="home desktop screen" width="600">
