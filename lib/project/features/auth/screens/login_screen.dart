@@ -12,22 +12,24 @@ class LoginScreen extends ConsumerWidget {
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     return const Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(24.0),
-        child: Center(
-          child: SizedBox(
-            width: 400,
-            child: Column(
-              spacing: 8.0,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                AppLogo(width: 192, height: 192),
-                AuthRecentlyUsedAccounts(),
-                SizedBox(height: 2.0),
-                TextDivider(text: 'OR'),
-                SizedBox(height: 2.0),
-                AuthLoginForm(),
-              ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(24.0),
+          child: Center(
+            child: SizedBox(
+              width: 400,
+              child: Column(
+                spacing: 8.0,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  AppLogo(width: 192, height: 192),
+                  AuthRecentlyUsedAccounts(),
+                  SizedBox(height: 2.0),
+                  TextDivider(text: 'OR'),
+                  SizedBox(height: 2.0),
+                  AuthLoginForm(),
+                ],
+              ),
             ),
           ),
         ),
