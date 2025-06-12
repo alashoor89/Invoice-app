@@ -151,3 +151,5 @@ google-services.json
 *.freezed.dart
 *.morphy.dart
 *.gen.dart
+
+resized/
