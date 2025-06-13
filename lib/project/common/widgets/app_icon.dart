@@ -9,17 +9,34 @@ class AppIcon extends ConsumerWidget {
   final Color? color;
   final bool defaultColor;
   final double? size;
+  final VoidCallback? onTap;
 
-  const AppIcon({required this.asset, this.color, this.defaultColor = false, this.size, super.key});
+  const AppIcon({
+    required this.asset,
+    this.onTap,
+    this.color,
+    this.defaultColor = false,
+    this.size,
+    super.key,
+  });
 
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     final palette = ref.watch(paletteProvider);
-    return SvgPicture.asset(
+    final icon = SvgPicture.asset(
       asset,
       height: size,
       width: size,
       colorFilter: defaultColor ? null : ColorFilter.mode(color ?? palette.primary, BlendMode.srcIn),
     );
+
+    if (onTap != null) {
+      return InkWell(
+        onTap: onTap,
+        child: icon,
+      );
+    }
+
+    return icon;
   }
 }

@@ -6,6 +6,7 @@ import '../../common/screens/splash_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
+import '../../features/users/screens/users_screen.dart';
 import 'models/router_model.dart';
 
 class Routes {
@@ -21,6 +22,7 @@ class Routes {
   static final List<RouteModel> branches = [
     home,
     settings,
+    users,
   ];
 
   static final RouteModel initial = splash;
@@ -53,6 +55,13 @@ class Routes {
     title: 'Home',
     path: '/',
     pageBuilder: (final context, final state) => const NoTransitionPage(child: HomeScreen()),
+  );
+
+  static final users = RouteModel.build(
+    name: 'UsersScreen',
+    title: 'Users',
+    path: '/users',
+    pageBuilder: (final context, final state) => const NoTransitionPage(child: UsersScreen()),
   );
 
   static final settings = RouteModel.build(

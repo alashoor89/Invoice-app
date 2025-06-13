@@ -30,6 +30,11 @@ class MainSidebarItems extends StatelessWidget {
       route: '', // TODO implement products route
     ),
     SidebarItemModel(
+      title: 'Users',
+      icon: Assets.icons.users,
+      route: Routes.users.path,
+    ),
+    SidebarItemModel(
       title: 'Settings',
       icon: Assets.icons.settings,
       route: Routes.settings.path,
