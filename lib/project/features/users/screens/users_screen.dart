@@ -5,6 +5,7 @@ import 'widgets/users_header.dart';
 import 'widgets/users_list.dart';
 import 'widgets/users_table.dart';
 
+// TODO add a search bar
 class UsersScreen extends ConsumerWidget {
   const UsersScreen({super.key});
 
@@ -15,13 +16,11 @@ class UsersScreen extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         spacing: 16.0,
         children: [
           if (breakpoint) const UsersHeader(),
-          if (breakpoint)
-            const UsersTable()
-          else
-            const UsersList(),
+          if (breakpoint) const UsersTable() else const Expanded(child: UsersList()),
         ],
       ),
     );

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../../../../common/widgets/content_constraint.dart';
+
 class UsersHeader extends StatelessWidget {
   const UsersHeader({super.key});
 
   @override
   Widget build(final BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 1200.0),
+    return ContentConstraint(
       child: Row(
         children: [
           const Padding(
