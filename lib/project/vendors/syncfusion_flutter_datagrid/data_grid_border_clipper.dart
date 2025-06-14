@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class DataGridBorderClipper extends CustomClipper<Rect> {
-
   const DataGridBorderClipper();
 
   @override

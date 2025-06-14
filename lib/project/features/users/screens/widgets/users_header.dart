@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../common/widgets/content_constraint.dart';
+import '../../controllers/users_controller.dart';
 
-class UsersHeader extends StatelessWidget {
+class UsersHeader extends ConsumerWidget {
   const UsersHeader({super.key});
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(final BuildContext context, final WidgetRef ref) {
     return ContentConstraint(
       child: Row(
         children: [
@@ -28,9 +30,7 @@ class UsersHeader extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 iconSize: 24,
               ),
-              onPressed: () {
-                // Show Create User Dialog
-              },
+              onPressed: ref.read(usersControllerProvider).openCreateUserDialog,
             ),
           ),
         ],

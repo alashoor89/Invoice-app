@@ -39,7 +39,7 @@ void main() async {
       );
     },
     (final error, final stack) {
-      // TODO handle errors
+      // TODO handle errors, When doing the real business logic, we should handle uncaught errors here
     },
   );
 }

@@ -13,6 +13,7 @@ class UsersScreen extends ConsumerWidget {
   Widget build(final BuildContext context, final WidgetRef ref) {
     final size = MediaQuery.sizeOf(context);
     final breakpoint = size.width > 700;
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -20,7 +21,7 @@ class UsersScreen extends ConsumerWidget {
         spacing: 16.0,
         children: [
           if (breakpoint) const UsersHeader(),
-          if (breakpoint) const UsersTable() else const Expanded(child: UsersList()),
+          if (breakpoint) const Flexible(child: UsersTable()) else const Expanded(child: UsersList()),
         ],
       ),
     );

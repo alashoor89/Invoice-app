@@ -15,6 +15,5 @@ abstract class UserModel with _$UserModel {
     @Default(false) final bool isActive,
   }) = _UserModel;
 
-  factory UserModel.fromJson(final Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
+  factory UserModel.fromJson(final Map<String, dynamic> json) => _$UserModelFromJson(json);
 }

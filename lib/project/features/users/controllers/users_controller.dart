@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/utils/logger.dart';
 import '../enums/user_role.dart';
 import '../interfaces/controllers.dart';
 import '../models/user_model.dart';
@@ -120,4 +121,9 @@ class _UsersController extends UsersController {
   final Ref _ref;
 
   _UsersController(this._ref);
+
+  @override
+  void openCreateUserDialog() {
+    'Got request to open create user dialog'.d();
+  }
 }

@@ -1,2 +1,1 @@
-abstract class SettingsController {
-}
+abstract class SettingsController {}

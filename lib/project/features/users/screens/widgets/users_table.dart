@@ -22,8 +22,9 @@ class UsersTable extends HookConsumerWidget {
   Widget build(final BuildContext context, final WidgetRef ref) {
     final source = useMemoized(() => _UsersDataSource());
     final users = ref.watch(usersProvider); // TODO We will handle the async object later on (`This provider should be a FutureProvider`)
-    final rowHeight = 50.0;
-    final maxHeight = rowHeight * min(10, (users.length + 1)); // users + header row
+    final rowHeight = 55.0;
+    final rows = min(10, (users.length + 1));
+    final maxHeight = rowHeight * rows; // users + header row
 
     // Update the data source with the latest users, if they have changed, otherwise the internal body will ignore the call
     source.updateUsers(users);

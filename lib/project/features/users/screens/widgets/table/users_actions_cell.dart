@@ -38,7 +38,15 @@ class UsersActionCell extends ConsumerWidget {
             color: palette.black,
             onTap: () {
               // Handle delete action
-              ref.read(usersProvider.notifier).update((final state) => state.where((final element) => element != user,).toList());
+              ref
+                  .read(usersProvider.notifier)
+                  .update(
+                    (final state) => state
+                        .where(
+                          (final element) => element != user,
+                        )
+                        .toList(),
+                  );
             },
           ),
         ],
