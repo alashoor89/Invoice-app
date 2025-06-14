@@ -18,7 +18,7 @@ class AuthLoginForm extends HookWidget {
     final pinEc = useTextEditingController();
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final buttonKey = useMemoized(() => GlobalKey<State<ButtonStyleButton>>());
-
+    // TODO add auto-hint for username and pin fields
     return Form(
       key: formKey,
       child: Column(

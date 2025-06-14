@@ -2,10 +2,14 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../common/extensions.dart';
 import '../../common/screens/splash_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
+import '../../features/users/controllers/users_controller.dart';
+import '../../features/users/screens/users_screen.dart';
+import '../theme/palette.dart';
 import 'models/router_model.dart';
 
 class Routes {
@@ -21,6 +25,7 @@ class Routes {
   static final List<RouteModel> branches = [
     home,
     settings,
+    users,
   ];
 
   static final RouteModel initial = splash;
@@ -53,6 +58,28 @@ class Routes {
     title: 'Home',
     path: '/',
     pageBuilder: (final context, final state) => const NoTransitionPage(child: HomeScreen()),
+  );
+
+  static final users = RouteModel.build(
+    name: 'UsersScreen',
+    title: 'Users',
+    path: '/users',
+    actionBuilder: (final context) {
+      final palette = context.read(paletteProvider);
+      return [
+        IconButton(
+          icon: const Icon(Icons.add),
+          color: palette.white,
+          tooltip: 'Create User',
+          style: IconButton.styleFrom(
+            backgroundColor: palette.white.withValues(alpha: 0.1),
+            shape: const CircleBorder(),
+          ),
+          onPressed: context.read(usersControllerProvider).openCreateUserDialog,
+        ),
+      ];
+    },
+    pageBuilder: (final context, final state) => const NoTransitionPage(child: UsersScreen()),
   );
 
   static final settings = RouteModel.build(

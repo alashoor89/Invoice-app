@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class RouteModel {
   final String name;
   final String title;
   final String path;
+  final List<Widget>? Function(BuildContext)? actionBuilder;
   final GoRouterPageBuilder? pageBuilder;
   final GoRouterWidgetBuilder? builder;
   final GoRouterRedirect? redirect;
@@ -13,6 +15,7 @@ class RouteModel {
   const RouteModel._({
     required this.name,
     required this.path,
+    this.actionBuilder,
     this.title = '',
     this.pageBuilder,
     this.redirect,
@@ -25,6 +28,7 @@ class RouteModel {
     required final String name,
     required final String path,
     final String title,
+    final List<Widget>? Function(BuildContext)? actionBuilder,
     final GoRouterPageBuilder? pageBuilder,
     final GoRouterWidgetBuilder? builder,
     final GoRouterRedirect? redirect,

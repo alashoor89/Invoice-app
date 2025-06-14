@@ -44,6 +44,8 @@ dependencies:
   flutter_laravel_form_validation: ^1.0.4
   screenshot: ^3.0.0
   settings_ui: ^2.0.2
+  syncfusion_flutter_datagrid: ^29.2.10
+  syncfusion_flutter_core: ^29.2.10
 
 dev_dependencies:
   flutter_test:
