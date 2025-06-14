@@ -30,6 +30,7 @@ abstract class Palette {
   final Color danger = const Color(0xFFE74C3C);
   final Color grey = const Color.fromRGBO(209, 213, 219, 1);
   final Color grey2 = const Color(0xFFEFEFEF);
+  final Color lightGrey = const Color(0xFFF9FAFB);
   final Color black = const Color(0xFF000000);
   final Color white = const Color(0xFFFFFFFF);
 
@@ -46,7 +47,7 @@ abstract class Palette {
 
   ThemeData get theme => ThemeData(
     brightness: brightness,
-    textTheme: GoogleFonts.nunitoTextTheme().apply(bodyColor: foreground, displayColor: foreground),
+    textTheme: GoogleFonts.interTextTheme().apply(bodyColor: foreground, displayColor: foreground),
 
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: backgroundAlt,
@@ -57,7 +58,7 @@ abstract class Palette {
         backgroundColor: WidgetStateProperty.all(primary),
         foregroundColor: WidgetStateProperty.all(backgroundAlt),
         textStyle: WidgetStateProperty.all(const TextStyle().bold),
-        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(vertical: 16, horizontal: 32)),
+        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(horizontal: 32)),
         shape: WidgetStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4)))),
       ),
     ),

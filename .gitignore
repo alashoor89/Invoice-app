@@ -153,3 +153,5 @@ google-services.json
 *.gen.dart
 
 resized/
+
+devtools_options.yaml

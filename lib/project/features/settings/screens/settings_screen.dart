@@ -25,15 +25,13 @@ class SettingsScreen extends StatelessWidget {
               title: const Text('Business Profile'),
               description: const Text('Manage your business profile'),
               leading: const Icon(Icons.business),
-              onPressed: (final context) {
-              },
+              onPressed: (final context) {},
             ),
             SettingsTile.navigation(
               title: const Text('Payment Methods'),
               description: const Text('Manage your payment methods'),
               leading: const Icon(Icons.payment),
-              onPressed: (final context) {
-              },
+              onPressed: (final context) {},
             ),
           ],
         ),
@@ -44,29 +42,25 @@ class SettingsScreen extends StatelessWidget {
               title: const Text('Default Currency'),
               description: const Text('Change the default currency'),
               leading: const Icon(Icons.currency_exchange),
-              onPressed: (final context) {
-              },
+              onPressed: (final context) {},
             ),
             SettingsTile.navigation(
               title: const Text('Date Format'),
               description: const Text('Change the date format'),
               leading: const Icon(Icons.date_range),
-              onPressed: (final context) {
-              },
+              onPressed: (final context) {},
             ),
             SettingsTile.navigation(
               title: const Text('Number Format'),
               description: const Text('Change the number format'),
               leading: const Icon(Icons.format_list_numbered),
-              onPressed: (final context) {
-              },
+              onPressed: (final context) {},
             ),
             SettingsTile.navigation(
               title: const Text('Language'),
               description: const Text('Change the app language'),
               leading: const Icon(Icons.language),
-              onPressed: (final context) {
-              },
+              onPressed: (final context) {},
             ),
           ],
         ),
