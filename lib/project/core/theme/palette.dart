@@ -58,7 +58,7 @@ abstract class Palette {
         backgroundColor: WidgetStateProperty.all(primary),
         foregroundColor: WidgetStateProperty.all(backgroundAlt),
         textStyle: WidgetStateProperty.all(const TextStyle().bold),
-        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(vertical: 16, horizontal: 32)),
+        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(horizontal: 32)),
         shape: WidgetStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4)))),
       ),
     ),

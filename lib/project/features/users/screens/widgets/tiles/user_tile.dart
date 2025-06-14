@@ -22,7 +22,7 @@ class UserTile extends ConsumerWidget {
       onTap: () {},
       backgroundColor: palette.backgroundAlt,
       radius: 8.0,
-      margin: const EdgeInsets.only(bottom: 8.0, left: 16.0, right: 16.0),
+      margin: const EdgeInsets.only(bottom: 8.0),
       padding: const EdgeInsetsDirectional.only(start: 8.0),
       child: Row(
         children: [
