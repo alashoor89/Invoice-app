@@ -73,19 +73,24 @@ class AppDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: borderRadius),
       insetPadding: insetPadding,
       backgroundColor: Colors.white,
-      child: SizedBox(
-        width: breakpoint ? double.infinity : width,
-        height: breakpoint ? double.infinity : height,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: breakpoint ? double.infinity : width,
+          maxHeight: breakpoint ? double.infinity : height,
+          minWidth: breakpoint ? double.infinity : 0.0,
+          minHeight: breakpoint ? double.infinity : 0.0,
+        ),
         child: Padding(
           padding: outerPadding,
           child: Column(
             spacing: 24.0,
+            mainAxisSize: MainAxisSize.min,
             children: [
               appbar,
-              Expanded(
+              Flexible(
                 child: Padding(
                   padding: innerPadding,
-                  child: child ?? const SizedBox.shrink(),
+                  child: SingleChildScrollView(child: child ?? const SizedBox.shrink()),
                 ),
               ),
             ],

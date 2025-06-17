@@ -5,7 +5,7 @@ import 'package:flutter_laravel_form_validation/extensions/extensions.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../common/extensions.dart';
-import '../../../../common/widgets/app_outlined_text_field.dart';
+import '../../../../common/widgets/form/app_outlined_text_field.dart';
 import '../../controllers/auth_controller.dart';
 import 'auth_login_button.dart';
 
@@ -22,7 +22,7 @@ class AuthLoginForm extends HookWidget {
     return Form(
       key: formKey,
       child: Column(
-        spacing: 4.0,
+        spacing: 12.0,
         children: [
           AppOutlinedTextField(
             label: 'Username',
@@ -37,7 +37,6 @@ class AuthLoginForm extends HookWidget {
             ),
             textInputAction: TextInputAction.next,
           ),
-          const SizedBox(height: 8.0),
           AppOutlinedTextField(
             label: 'PIN',
             placeholder: 'Enter your PIN',
@@ -57,7 +56,6 @@ class AuthLoginForm extends HookWidget {
             textInputAction: TextInputAction.done,
             onSubmitted: (_) => buttonKey.currentState?.widget.onPressed?.call(),
           ),
-          const SizedBox(height: 8.0),
           SizedBox(
             width: double.infinity,
             height: 44,
