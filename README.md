@@ -10,7 +10,7 @@ Demo This application is available for demo at [https://invoice-app-p484.apps.al
 
 - [x] User authentication UI
 - [x] Settings UI
-- [ ] Manage Users UI
+- [x] Manage Users UI
 - [ ] Inventory UI
 - [ ] Invoices UI
 - [ ] Invoice PDF generation
