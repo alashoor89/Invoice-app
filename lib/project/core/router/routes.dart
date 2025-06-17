@@ -75,7 +75,7 @@ class Routes {
             backgroundColor: palette.white.withValues(alpha: 0.1),
             shape: const CircleBorder(),
           ),
-          onPressed: context.read(usersControllerProvider).openCreateUserDialog,
+          onPressed: () => context.read(usersControllerProvider).openCreateUserDialog(context),
         ),
       ];
     },

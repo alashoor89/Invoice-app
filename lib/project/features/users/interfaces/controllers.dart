@@ -1,5 +1,5 @@
+import 'package:flutter/material.dart';
+
 abstract class UsersController {
-
-  void openCreateUserDialog();
-
+  void openCreateUserDialog(final BuildContext context);
 }

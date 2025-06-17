@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/utils/logger.dart';
+import '../../../common/widgets/dialogs/app_dialog.dart';
 import '../enums/user_role.dart';
 import '../interfaces/controllers.dart';
 import '../models/user_model.dart';
+import '../screens/widgets/dialogs/users_create_dialog.dart';
 
 part 'users_controller.g.dart';
 
@@ -123,7 +125,15 @@ class _UsersController extends UsersController {
   _UsersController(this._ref);
 
   @override
-  void openCreateUserDialog() {
-    'Got request to open create user dialog'.d();
+  void openCreateUserDialog(final BuildContext context) {
+    if (!context.mounted) {
+      return;
+    }
+
+    showDialog(
+      context: context,
+
+      builder: (_) => const AppDialog(title: 'Create User', child: UsersCreateDialog()),
+    );
   }
 }

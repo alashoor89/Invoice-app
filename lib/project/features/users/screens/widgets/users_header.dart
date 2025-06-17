@@ -30,7 +30,7 @@ class UsersHeader extends ConsumerWidget {
                 padding: EdgeInsets.zero,
                 iconSize: 24,
               ),
-              onPressed: ref.read(usersControllerProvider).openCreateUserDialog,
+              onPressed: () => ref.read(usersControllerProvider).openCreateUserDialog(context),
             ),
           ),
         ],
