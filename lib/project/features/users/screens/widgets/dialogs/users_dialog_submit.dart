@@ -4,12 +4,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../../common/constants/constants.dart';
 import '../../../../../core/theme/palette.dart';
 
-class UsersCreateDialogSubmit extends ConsumerWidget {
+class UsersDialogSubmit extends ConsumerWidget {
   final GlobalKey<State<ButtonStyleButton>>? buttonKey;
   final VoidCallback onSubmit;
   final String label;
 
-  const UsersCreateDialogSubmit({
+  const UsersDialogSubmit({
     required this.label,
     required this.onSubmit,
     this.buttonKey,

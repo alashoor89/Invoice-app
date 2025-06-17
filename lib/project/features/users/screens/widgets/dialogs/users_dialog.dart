@@ -8,19 +8,28 @@ import '../../../../../common/widgets/form/app_outlined_dropdown.dart';
 import '../../../../../common/widgets/form/app_outlined_text_field.dart';
 import '../../../../../common/widgets/form/app_switch.dart';
 import '../../../enums/user_role.dart';
-import 'users_create_dialog_submit.dart';
+import '../../../models/users_form_model.dart';
+import 'users_dialog_submit.dart';
 
-class UsersCreateDialog extends HookConsumerWidget {
-  const UsersCreateDialog({super.key});
+class UsersDialog extends HookConsumerWidget {
+  final String buttonLabel;
+  final UsersFormModel initialValue;
+  final bool showPIN;
+
+  const UsersDialog({
+    required this.buttonLabel,
+    this.initialValue = const UsersFormModel(),
+    this.showPIN = true,
+    super.key,
+  });
 
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
-    final usernameEC = useTextEditingController();
-    final fullNameEC = useTextEditingController();
+    final form = useRef<UsersFormModel>(initialValue);
+    final fullNameEC = useTextEditingController(text: initialValue.fullName);
+    final usernameEC = useTextEditingController(text: initialValue.username);
     final pinEC = useTextEditingController();
-    final role = useRef<UserRole?>(null); // why ref? We don't want to rebuild the widget when the role changes
-    final activeSwitch = useRef(false); // See top ^^
 
     return Form(
       key: formKey,
@@ -55,52 +64,56 @@ class UsersCreateDialog extends HookConsumerWidget {
             ),
             textInputAction: TextInputAction.next,
           ),
-          AppOutlinedTextField(
-            label: 'PIN',
-            placeholder: 'Enter your PIN',
-            inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(6), // Assuming a 6-digit PIN
-            ],
-            controller: pinEC,
-            obscure: true,
-            validator: ['min:6', 'max:6', 'required'].validate(
-              customMessages: {
-                'min': 'PIN must be exactly 6 digits long.',
-                'max': 'PIN must be exactly 6 digits long.',
-                'required': 'PIN is required.',
-              },
+          if (showPIN)
+            AppOutlinedTextField(
+              label: 'PIN',
+              placeholder: 'Enter your PIN',
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(6), // Assuming a 6-digit PIN
+              ],
+              controller: pinEC,
+              obscure: true,
+              validator: ['min:6', 'max:6', 'required'].validate(
+                customMessages: {
+                  'min': 'PIN must be exactly 6 digits long.',
+                  'max': 'PIN must be exactly 6 digits long.',
+                  'required': 'PIN is required.',
+                },
+              ),
+              textInputAction: TextInputAction.next,
             ),
-            textInputAction: TextInputAction.next,
-          ),
           AppOutlinedDropdown<UserRole>(
             label: 'Role',
             placeholder: 'Select a role',
             items: UserRole.values,
+            initialValue: initialValue.role,
             titleBuilder: (final item) => item.label,
-            onChanged: (final value) => role.value = value,
+            onChanged: (final value) => form.value = form.value.copyWith(role: value ?? form.value.role),
           ),
           AppSwitch(
             label: 'Account Status',
             activeLabel: 'Active',
             inactiveLabel: 'Inactive',
-            initialValue: false,
-            onChanged: (final value) => activeSwitch.value = value,
+            initialValue: initialValue.active,
+            onChanged: (final value) => form.value = form.value.copyWith(active: value),
           ),
           const Divider(),
-          UsersCreateDialogSubmit(
-            label: 'Create',
+          UsersDialogSubmit(
+            label: buttonLabel,
             onSubmit: () {
               final validate = formKey.currentState?.validate() ?? false;
               if (!validate) {
                 return;
               }
-              // Handle the submit action here
-              print('Full Name: ${fullNameEC.text}');
-              print('Username: ${usernameEC.text}');
-              print('Role: ${role.value}');
-              print('PIN: ${pinEC.text}');
-              print('Active: ${activeSwitch.value}');
+
+              form.value = form.value.copyWith(
+                fullName: fullNameEC.text,
+                username: usernameEC.text,
+                pin: pinEC.text,
+              );
+
+              Navigator.pop(context, form.value);
             },
           ),
         ],
