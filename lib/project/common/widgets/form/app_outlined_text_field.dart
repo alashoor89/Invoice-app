@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../core/theme/palette.dart';
-import '../constants/fonts.dart';
+import '../../../core/theme/palette.dart';
+import '../../constants/fonts.dart';
 
 class AppOutlinedTextField extends HookConsumerWidget {
   final String label;
@@ -62,6 +62,7 @@ class AppOutlinedTextField extends HookConsumerWidget {
         errorBorder: OutlineInputBorder(borderSide: BorderSide(color: palette.danger)),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         floatingLabelStyle: const TextStyle().bold.copyWith(color: palette.black),
+        labelStyle: const TextStyle().bold.copyWith(color: palette.black),
         hintStyle: const TextStyle().small.copyWith(color: palette.black.withValues(alpha: 0.5)),
         suffixIcon: icon != null ? Icon(icon, color: palette.black.withValues(alpha: 0.5)) : null,
       ),

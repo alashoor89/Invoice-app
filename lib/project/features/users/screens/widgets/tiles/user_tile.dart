@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../../common/widgets/interactive_ink_well.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../../../../vendors/syncfusion_flutter_datagrid/enhanced_grid_cell.dart';
+import '../../../controllers/users_controller.dart';
 import '../../../models/user_model.dart';
 
 class UserTile extends ConsumerWidget {
@@ -20,6 +21,9 @@ class UserTile extends ConsumerWidget {
     final statusColor = user.isActive ? palette.success : palette.danger;
     return InteractiveInkWell(
       onTap: () {},
+      onLongPress: () {
+        ref.read(usersControllerProvider).openEditUserDialog(context, user);
+      },
       backgroundColor: palette.backgroundAlt,
       radius: 8.0,
       margin: const EdgeInsets.only(bottom: 8.0),

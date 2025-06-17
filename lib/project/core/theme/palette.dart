@@ -55,12 +55,16 @@ abstract class Palette {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: WidgetStateProperty.all(primary),
-        foregroundColor: WidgetStateProperty.all(backgroundAlt),
-        textStyle: WidgetStateProperty.all(const TextStyle().bold),
-        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(horizontal: 32)),
-        shape: WidgetStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4)))),
+        backgroundColor: WidgetStatePropertyAll(primary),
+        foregroundColor: WidgetStatePropertyAll(backgroundAlt),
+        textStyle: WidgetStatePropertyAll(const TextStyle().bold),
+        elevation: const WidgetStatePropertyAll(0),
+        padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 32)),
+        shape: const WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8)))),
       ),
+    ),
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStatePropertyAll(white),
     ),
   );
 }

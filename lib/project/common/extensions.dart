@@ -21,9 +21,7 @@ extension DynamicExt on dynamic {
 }
 
 extension BuildContextExt on BuildContext {
-
   T read<T>(final ProviderListenable<T> provider) => ProviderScope.containerOf(this, listen: false).read<T>(provider);
-
 
   void showErrorSnackBar({required final String message, final Function()? onRetry}) {
     final state = ScaffoldMessenger.maybeOf(this);

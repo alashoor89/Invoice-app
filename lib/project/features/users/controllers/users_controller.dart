@@ -1,10 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../common/widgets/dialogs/app_dialog.dart';
 import '../../../core/utils/logger.dart';
 import '../enums/user_role.dart';
 import '../interfaces/controllers.dart';
 import '../models/user_model.dart';
+import '../models/users_form_model.dart';
+import '../screens/widgets/dialogs/users_dialog.dart';
 
 part 'users_controller.g.dart';
 
@@ -123,7 +127,52 @@ class _UsersController extends UsersController {
   _UsersController(this._ref);
 
   @override
-  void openCreateUserDialog() {
-    'Got request to open create user dialog'.d();
+  Future<void> openCreateUserDialog(final BuildContext context) async {
+    if (!context.mounted) {
+      return;
+    }
+    final form = await showDialog<UsersFormModel?>(
+      context: context,
+      builder: (_) => const AppDialog(
+        title: 'Create User',
+        child: UsersDialog(
+          buttonLabel: 'Create',
+        ),
+      ),
+    );
+
+    if (form == null) {
+      return;
+    }
+
+    'Create: $form'.d();
+  }
+
+  @override
+  Future<void> openEditUserDialog(final BuildContext context, final UserModel user) async {
+    if (!context.mounted) {
+      return;
+    }
+
+    final fromUser = UsersFormModel.fromUser(user);
+    final form = await showDialog<UsersFormModel?>(
+      context: context,
+      builder: (_) {
+        return AppDialog(
+          title: 'Update User',
+          child: UsersDialog(
+            buttonLabel: 'Update',
+            initialValue: fromUser,
+            showPIN: false,
+          ),
+        );
+      },
+    );
+
+    if (form == null) {
+      return;
+    }
+
+    'Update: $form'.d();
   }
 }
