@@ -132,7 +132,6 @@ class _UsersController extends UsersController {
 
     showDialog(
       context: context,
-
       builder: (_) => const AppDialog(title: 'Create User', child: UsersCreateDialog()),
     );
   }
